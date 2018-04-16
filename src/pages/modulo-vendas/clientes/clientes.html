@@ -16,33 +16,43 @@
 
 
 <ion-content padding> 
+ 
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
 
-
-    <ion-card>
-        <ion-card-header>
-          Arthur Silva
+  <div *ngFor="let item of items">
+    <ng-template [ngIf]="item.limite >= 1000" [ngIfElse]="limiteBaixo">
+      <ion-card class="redcard" (click)="e(item.id_cliente); presentActionSheet()">
+        <ion-card-header class="redcard">
+          {{item.nome_cliente}}
         </ion-card-header>
         <ion-card-content>
-          <span class="cnpj">12.248.420/4521-60</span>  <span class="cod">32650</span>
+          <span class="cnpj">{{item.cnpj}}</span>
+
+          <span>{{item.limite}}</span>
+
+          <span class="cod">{{item.id_cliente}}</span>
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+
+    <ng-template #limiteBaixo>
+
+
+      <ion-card (click)="e(item.id_cliente); presentActionSheet()">
+        <ion-card-header>
+          {{item.nome_cliente}}
+        </ion-card-header>
+        <ion-card-content>
+          <span class="cnpj">{{item.cnpj}}</span>
+
+          <span>{{item.limite}}</span>
+
+          <span class="cod">{{item.id_cliente}}</span>
         </ion-card-content>
       </ion-card>
 
 
-  <ion-card style="background-color:#DA0038; color: white; font-weight:bold;">
-    <ion-card-header style="color: white;">
-      Arthur Moreira Batista
-    </ion-card-header>
-    <ion-card-content>
-      <span class="cnpj">43.148.448/0001-60</span>  <span class="cod">32651</span>
-    </ion-card-content>
-  </ion-card>
+    </ng-template>
 
-  <ion-card>
-      <ion-card-header>
-        Arthur Batista
-      </ion-card-header>
-      <ion-card-content>
-        <span class="cnpj">12.148.420/0001-60</span>  <span class="cod">32652</span>
-      </ion-card-content>
-    </ion-card>
+  </div>
 </ion-content>

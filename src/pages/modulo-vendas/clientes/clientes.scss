@@ -3,13 +3,21 @@ page-clientes {
         width: 100vw;
         font-weight: bold;  
     }
-    .cod{
-        margin-left:28vw; 
+    ion-card-header{
+        white-space: normal;
+    }
+    .cod{ 
+        float: right;
     }
 
     .refresh{ 
         font-size: 10vw;
         color: white;
         margin-right:2vw;
+    }
+    .redcard{
+        background-color: red; 
+        font-weight: bold;
+        color: white;
     }
 }

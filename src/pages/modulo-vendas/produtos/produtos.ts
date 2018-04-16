@@ -21,7 +21,7 @@ export class ProdutosPage {
       "id_produto": "1"
     },
     {
-      "nome": "A22 - Ovo industrial 6 ",
+      "nome": "A22 - Ovo inddasdsas asdfasfas safasfaws asfsagsa wustrial 6 ",
       "preco": "R$ 6,60",
       "qtd": "2500 bd",
       "id_produto": "2"

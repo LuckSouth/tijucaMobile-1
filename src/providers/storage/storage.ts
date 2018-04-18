@@ -14,10 +14,13 @@ export class StorageProvider {
   arrayRelatorio = [[]];
 
 
-  login = {
-    isLoggedIn: false,
-    name: "",
+  clientes: any = {
+    nome: "",
+    cnpj: 1,
+    limite: 1,
+    id: 1
   }
+
 
   //Dados despesas
   despesas = {
@@ -51,11 +54,11 @@ export class StorageProvider {
     motorista: "bino",
     id: 3,
     dataArla: "",
-    postoArla: "", 
+    postoArla: "",
     km: "",
-    litrosArla: "", 
+    litrosArla: "",
     pagArla: "",
-    precoArla: "", 
+    precoArla: "",
   }
 
 
@@ -64,15 +67,15 @@ export class StorageProvider {
   //Dados abastecimento
   abastecimento = {
     motorista: "bino",
-    id: 4, 
+    id: 4,
     postoAbastecimento: "",
     dataAbastecimento: "",
     tipoPagmtAbastecimento: "",
     odometro: "",
-    litrosBomb1: "", 
-    litrosBomb2: "", 
+    litrosBomb1: "",
+    litrosBomb2: "",
     precoAbastecimento: "",
-  } 
+  }
 
   //Recuperar dados 
   listaAbastecimento: any[];
@@ -80,14 +83,16 @@ export class StorageProvider {
   listaDescricaoDespesa: any[];
   listaDespesa: any[];
   listaReceitas: any[];
-  listaAuth: any[];
   listaFornecedores: any[];
   listaProdutos: any[];
   listaFormasPagamento: any[];
   listaGeral: any[];
   listaPostos: any[];
+  listaClientes: any[];
 
-  chaveAuth: string = "Auth";
+
+  chaveClientes = "vendasClientes"
+
   chaveAbastecimento: string = "abastecimento";
   chaveArla: string = "arla";
   chaveDescricaoDespesa: string = "descricaoDespesas";
@@ -97,10 +102,16 @@ export class StorageProvider {
   chaveFornecedores: string = "fornecedores";
   chaveProdutos: string = "produtos";
   chaveFormasPagamento: string = "formas_pagamento";
-  chavePostos: string = "postos"; 
+  chavePostos: string = "postos";
 
 
   constructor(private storage: Storage) {
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveClientes).then((registros) => {
+        if (registros) { this.listaClientes = registros; } else { this.listaClientes = []; }
+      });
+    });
 
     this.storage.ready().then(() => {
       this.storage.get(this.chaveReceitas).then((registros) => {
@@ -156,7 +167,7 @@ export class StorageProvider {
       });
     });
 
-  
+
     this.storage.ready().then(() => {
       this.storage.get(this.chaveDespesa).then((registros) => {
         if (registros) { this.listaDespesa = registros; } else { this.listaDespesa = []; }
@@ -174,13 +185,19 @@ export class StorageProvider {
   }
   listarAbastecimento() {
     return this.listaAbastecimento;
-  } 
+  }
   listarReceitas() {
     return this.listaReceitas;
   }
   listarDespesas() {
     return this.listaDespesa;
   }
+  listarClientes() {
+    return this.listaClientes
+  }
+
+
+
 
   // Recuperar dados
   listarFornecedores() {
@@ -227,14 +244,7 @@ export class StorageProvider {
 
 
 
-  //Verificação Login
 
-  loginUser() {
-    this.storage.ready().then(() => {
-      this.listaAuth.push(this.login);
-      this.storage.set(this.chaveAuth, this.listaAuth);
-    })
-  }
 
 
   /* Esse metodo provavelmente nunca é chamado, verficar se está sendo usado, caso contrario excluir */
@@ -245,7 +255,15 @@ export class StorageProvider {
     });
 
   }
- 
+
+
+  adicionarClientes() {
+    this.storage.ready().then(() => {
+      this.listaClientes.push(this.clientes);
+      this.storage.set(this.chaveClientes, this.listaClientes);
+    });
+  }
+
   // Adicionar Despesas
   adicionarDespesas() {
     this.storage.ready().then(() => {
@@ -269,7 +287,7 @@ export class StorageProvider {
       this.storage.set(this.chaveArla, this.listaArla);
     });
   }
- 
+
 
   adicionarAbastecimento() {
     this.storage.ready().then(() => {
@@ -305,6 +323,10 @@ export class StorageProvider {
 
   atualizarGeral(dados) {
     this.storage.set(this.chaveGeral, dados);
+  }
+
+  atualizarClientes(dados) {
+    this.storage.set(this.chaveClientes, dados);
   }
 
   delete(id) {

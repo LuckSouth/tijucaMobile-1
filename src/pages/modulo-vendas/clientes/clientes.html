@@ -15,22 +15,23 @@
 </ion-header>
 
 
-<ion-content padding> 
- 
-  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
+<ion-content> 
 
+ <div class="search">
+  <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
+</div> <br> <br>
+<div  style="margin-top:auto">
   <div *ngFor="let item of items">
-    <ng-template [ngIf]="item.limite >= 1000" [ngIfElse]="limiteBaixo">
+    <ng-template [ngIf]="item.limiteCredito >= 1000" [ngIfElse]="limiteBaixo">
       <ion-card class="redcard" (click)="e(item.id_cliente); presentActionSheet()">
         <ion-card-header class="redcard">
-          {{item.nome_cliente}}
+          {{item.nome}}
         </ion-card-header>
         <ion-card-content>
           <span class="cnpj">{{item.cnpj}}</span>
 
-          <span>{{item.limite}}</span>
 
-          <span class="cod">{{item.id_cliente}}</span>
+          <span class="cod">{{item.codigoCliente}}</span>
         </ion-card-content>
       </ion-card>
     </ng-template>
@@ -38,16 +39,16 @@
     <ng-template #limiteBaixo>
 
 
-      <ion-card (click)="e(item.id_cliente); presentActionSheet()">
+      <ion-card (click)="e(item.codigoCliente); presentActionSheet()">
         <ion-card-header>
-          {{item.nome_cliente}}
+          {{item.nome}}
         </ion-card-header>
         <ion-card-content>
           <span class="cnpj">{{item.cnpj}}</span>
 
-          <span>{{item.limite}}</span>
+         <!-- <span>{{item.limite}}</span> -->
 
-          <span class="cod">{{item.id_cliente}}</span>
+          <span class="cod">{{item.codigoCliente}}</span>
         </ion-card-content>
       </ion-card>
 
@@ -55,4 +56,5 @@
     </ng-template>
 
   </div>
+</div>
 </ion-content>

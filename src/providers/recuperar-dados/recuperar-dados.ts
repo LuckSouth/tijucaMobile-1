@@ -16,6 +16,28 @@ export class RecuperarDadosProvider {
     public storageProvider: StorageProvider) {
   }
 
+  AtualizaClientes(): void {
+    let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
+      options: any = {},
+      url: any = this.baseURI + "vendas-clientes.php";
+
+    try {
+      this.http.post(url, JSON.stringify(options), headers)
+        .subscribe((data: any) => {
+          this.storageProvider.atualizarClientes(data);
+          this.hideForm = true;
+          console.log(data)
+        },
+        (error: any) => {
+          console.log(error);
+
+        });
+    } catch (error) {
+      console.log('catch')
+    }
+
+  }
+
 
   postos(): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -25,8 +47,8 @@ export class RecuperarDadosProvider {
     try {
       this.http.post(url, JSON.stringify(options), headers)
         .subscribe((data: any) => {
-          this.storageProvider.atualizarPostos(data); 
-          this.hideForm = true; 
+          this.storageProvider.atualizarPostos(data);
+          this.hideForm = true;
         },
         (error: any) => {
           console.log(error);
@@ -52,10 +74,10 @@ export class RecuperarDadosProvider {
           this.storageProvider.atualizarFornecedores(data);
           this.hideForm = true;
         },
-          (error: any) => {
-            console.log(error);
+        (error: any) => {
+          console.log(error);
 
-          });
+        });
     } catch (error) {
       console.log('catch')
     }
@@ -73,15 +95,13 @@ export class RecuperarDadosProvider {
     try {
       this.http.post(url, JSON.stringify(options), headers)
         .subscribe((data: any) => {
-          //console.log(data)
-          //console.log(this.dados)
           this.storageProvider.atualizarGeral(data);
           this.hideForm = true;
         },
-          (error: any) => {
-            console.log(error);
+        (error: any) => {
+          console.log(error);
 
-          });
+        });
     } catch (error) {
       console.log('catch')
     }
@@ -109,10 +129,10 @@ export class RecuperarDadosProvider {
 
 
         },
-          (error: any) => {
-            console.log(error);
+        (error: any) => {
+          console.log(error);
 
-          });
+        });
     } catch (error) {
       console.log('catch')
     }
@@ -137,10 +157,10 @@ export class RecuperarDadosProvider {
 
 
         },
-          (error: any) => {
-            console.log(error);
+        (error: any) => {
+          console.log(error);
 
-          });
+        });
     } catch (error) {
       console.log('catch')
     }
@@ -166,10 +186,10 @@ export class RecuperarDadosProvider {
 
 
         },
-          (error: any) => {
-            console.log(error);
+        (error: any) => {
+          console.log(error);
 
-          });
+        });
     } catch (error) {
       console.log('catch')
     }

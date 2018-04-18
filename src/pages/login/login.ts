@@ -55,6 +55,7 @@ export class LoginPage {
     this.recuperarDados.geral();
     this.recuperarDados.despesas('nome', 'produtos');
     this.recuperarDados.postos();
+    this.recuperarDados.AtualizaClientes();
   }   
   senha = 'a';
   

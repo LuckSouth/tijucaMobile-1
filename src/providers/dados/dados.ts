@@ -5,12 +5,12 @@ import { StorageProvider } from "../../providers/storage/storage";
 
 @Injectable()
 export class DadosProvider {
+  baseURI: string = "192.168.10.160";
 
   constructor(public http: HttpClient,
     public storage: StorageProvider) {
   }
 
-  private baseURI: string = "http://192.168.10.160/";
   public hideForm: boolean = false;
   despesas(motorista: string,
     idViagem: string,

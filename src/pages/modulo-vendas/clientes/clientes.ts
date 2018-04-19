@@ -4,12 +4,7 @@ import { FinanceiroPage } from '../clientes/venda/financeiro/financeiro';
 import { PedidoPage } from '../clientes/venda/pedido/pedido';
 import { InformacoesPage } from '../clientes/venda/informacoes/informacoes';
 import { StorageProvider } from "../../../providers/storage/storage";
-/**
- * Generated class for the ClientesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { RecuperarDadosProvider } from "../../../providers/recuperar-dados/recuperar-dados";
 
 @IonicPage()
 @Component({
@@ -29,11 +24,15 @@ export class ClientesPage {
     public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController,
     public alertCtrl: AlertController,
-    public storage: StorageProvider) {
+    public storage: StorageProvider,
+    public dados: RecuperarDadosProvider) {
     this.initializeItems();
   }
 
-
+  sincronizar(){
+    this.dados.AtualizaClientes();
+    console.log('atualizado')
+  }
 
   initializeItems() {
 

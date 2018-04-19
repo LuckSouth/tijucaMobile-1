@@ -14,36 +14,36 @@
 
       <div class="grid">
         <div class="row">
-          <div class="column" (click)="linkViagens()">Viagens
+          <div class="enabled" id="viagem" (click)="linkViagens()">Viagens
             <div class="interna">
               <img src="assets/images/frotas.png" />
             </div>
           </div>
-          <div class="column" id="disabled">Caixa
+          <div class="enabled" id = "caixa">Caixa
             <div class="interna">
               <img src="assets/images/caixa.png" />
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="column" (click) = "linkVendas()">Vendas
+          <div class="enabled" id="vendas" (click) = "linkVendas()">Vendas
             <div class="interna">
               <img class="imagem" src="assets/images/vendas.png" />
             </div>
           </div>
-          <div class="column" id="disabled">Cheque
+          <div class="enabled" id="cheque">Cheque
             <div class="interna">
               <img class="imagem" src="assets/images/cheque.png" />
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="column" id="disabled">Fábrica
+          <div class="enabled" id="fabrica">Fábrica
             <div class="interna">
               <img class="imagem" src="assets/images/fabrica.png" />
             </div>
           </div>
-          <div class="column" id="disabled">Suporte
+          <div class="enabled" id="suporte">Suporte
             <div class="interna">
               <img class="imagem" src="assets/images/suporte.png" />
             </div>
@@ -55,6 +55,5 @@
     </ion-content>
   </div>
 
-  Nome: {{name}} Email: {{email}} Family Name: {{familyName}} Given Name: {{givenName}} User ID: {{userId}}
 
 </span>

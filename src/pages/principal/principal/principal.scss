@@ -79,8 +79,39 @@ page-principal {
         
     }
 
-    #disabled{
-        background: rgb(88, 88, 88);
+    .disabled{
+        background-color: rgb(88, 88, 88);
+        border: 1px solid #ccc;
+        border-radius: 5%;
+        color: white;
+        padding: 5px;
+        height: 20vh;
+        margin-left: 2vw;
+        width: 40vw;
+        text-align: center;
+        font-size: 5vw; 
+        font-weight: bold;
+        position: relative;
+        float: left;
+        display: block;
+        box-sizing: border-box;
+    }
+    .enabled{
+        background-color: #135F8C;
+        border: 1px solid #ccc;
+        border-radius: 5%;
+        color: white;
+        padding: 5px;
+        height: 20vh;
+        margin-left: 2vw;
+        width: 40vw;
+        text-align: center;
+        font-size: 5vw; 
+        font-weight: bold;
+        position: relative;
+        float: left;
+        display: block;
+        box-sizing: border-box;
     }
 
 }

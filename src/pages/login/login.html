@@ -1,28 +1,32 @@
-<ion-header>
+<ion-toolbar>
   <ion-navbar color="tijuca">
     <ion-title padding>Login</ion-title>
   </ion-navbar>
-</ion-header>
+</ion-toolbar>
 
 
 <ion-content padding>
 
-  
-  <img src="../assets/images/tijuca-logo.png" class="img">
-  <br>
-  <ion-item>
-    <ion-label stacked><span class="input">Usuário</span></ion-label>
-    <ion-input type="text" [(ngModel)]="usuario"></ion-input>
-  </ion-item>
+  <div class="geral" style="margin-top: 25%">
+    <img src="../assets/images/tijuca-logo.png" class="img">
+    <br>
+    <ion-item>
+      <ion-label stacked>
+        <span class="input">Usuário</span>
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="usuario"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label stacked><span class="input">Senha</span></ion-label>
-    <ion-input type="password" [(ngModel)]="senha"></ion-input>
-  </ion-item>
-  <br>
+    <ion-item>
+      <ion-label stacked>
+        <span class="input">Senha</span>
+      </ion-label>
+      <ion-input type="password" [(ngModel)]="senha"></ion-input>
+    </ion-item>
+    <br>
 
-  
-  
-  <button ion-button full color="tijuca" (click)= "verificarLogin(usuario, senha)">Login</button>
+  </div>
+
+  <button ion-button full color="tijuca" (click)="verificarLogin(usuario, senha)">Login</button>
 
 </ion-content>

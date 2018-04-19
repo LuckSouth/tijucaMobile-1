@@ -10,7 +10,7 @@ import { VendasPage } from '../modulo-vendas/vendas/vendas';
 import { EnviarProvider } from "../../providers/enviar/enviar";
 import { RecuperarDadosProvider } from '../../providers/recuperar-dados/recuperar-dados';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { PrincipalPage } from '../principal/principal/principal';
 
 @IonicPage()
 @Component({
@@ -102,13 +102,33 @@ export class LoginPage {
     alerta.present();
   }
 
-  loginCorreto() {
+  loginCorreto(dados) {
+
     let alerta = this.alertCtrl.create({
       title: 'Login',
       subTitle: 'Login realizado com sucesso',
       buttons: ['Ok']
     });
     alerta.present();
+
+    this.storageProvider.atualizarLogin(dados)
+
+    if (this.storageProvider.listaLogin[0].viagens == 1) {
+      this.recuperarDados.fornecedores('nome', 'produtos');
+      this.recuperarDados.produtos('nome', 'produtos');
+      this.recuperarDados.formasPagamento('nome', 'produtos');
+      this.recuperarDados.geral();
+      this.recuperarDados.despesas('nome', 'produtos');
+      this.recuperarDados.postos();
+    }
+    
+    if(this.storageProvider.listaLogin[0].vendas == 1){
+      
+      this.recuperarDados.AtualizaClientes();
+    }
+
+    this.navCtrl.push(PrincipalPage)
+
   }
 
   verificarLogin(usuario, senha) {
@@ -124,14 +144,11 @@ export class LoginPage {
       this.http.post(url, JSON.stringify(options), headers)
         .subscribe((data: any) => {
 
+          console.log(data)
           try {
 
-            if (data.real[0] === null) {
-              console.log('njuo')
-            }
-
             if (data.real[0].senha == data.suposto) {
-              this.loginCorreto()
+              this.loginCorreto(data.real)
             } else {
               let alerta = this.alertCtrl.create({
                 title: 'Falha',
@@ -144,9 +161,11 @@ export class LoginPage {
             this.hideForm = true;
           } catch (error) {
 
+            console.log(error)
+
             let alerta = this.alertCtrl.create({
               title: 'Falha',
-              subTitle: 'Verifique o nome de usuario',
+              subTitle: 'Verifique o nome de usuário',
               buttons: ['Ok']
             });
             alerta.present();
@@ -165,6 +184,8 @@ export class LoginPage {
 
     }
   }
+
+
 
 
 

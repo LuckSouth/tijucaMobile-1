@@ -4,9 +4,9 @@
 
   <ion-header>
 
-    <ion-toolbar color="tijuca">
+    <ion-navbar color="tijuca">
       <ion-title style="text-align: center">Principal</ion-title>
-    </ion-toolbar>
+    </ion-navbar>
 
   </ion-header>
   <div class="fixed-content">
@@ -26,7 +26,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="column" id="disabled">Vendas
+          <div class="column" (click) = "linkVendas()">Vendas
             <div class="interna">
               <img class="imagem" src="assets/images/vendas.png" />
             </div>

@@ -12,6 +12,7 @@ export class StorageProvider {
   arrayDespesas = [];
   arrayReceitas = [];
   arrayRelatorio = [[]];
+  arrayLogin = []
 
 
   clientes: any = {
@@ -20,6 +21,14 @@ export class StorageProvider {
     limite: 1,
     id: 1
   }
+
+  login: any = {
+    id: 0,
+    nome: "",
+    vendas: 2,
+    viagens: 2
+  }
+
 
 
   //Dados despesas
@@ -89,6 +98,7 @@ export class StorageProvider {
   listaGeral: any[];
   listaPostos: any[];
   listaClientes: any[];
+  listaLogin: any[]
 
 
   chaveClientes = "vendasClientes"
@@ -103,13 +113,19 @@ export class StorageProvider {
   chaveProdutos: string = "produtos";
   chaveFormasPagamento: string = "formas_pagamento";
   chavePostos: string = "postos";
-
+  chaveLogin:string = "login"
 
   constructor(private storage: Storage) {
 
     this.storage.ready().then(() => {
       this.storage.get(this.chaveClientes).then((registros) => {
         if (registros) { this.listaClientes = registros; } else { this.listaClientes = []; }
+      });
+    });
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveLogin).then((registros) => {
+        if (registros) { this.listaLogin = registros; } else { this.listaLogin = []; }
       });
     });
 
@@ -195,7 +211,9 @@ export class StorageProvider {
   listarClientes() {
     return this.listaClientes
   }
-
+  listarLogin(){
+    return this.login
+  }
 
 
 
@@ -300,6 +318,9 @@ export class StorageProvider {
   // 1º vai ser o "Storage" que quer atualizar -- 2º os "Dados" que vai chegar do formulário
   // Atualizar determinados registros
 
+  atualizarLogin(dados) {
+    this.storage.set(this.chaveLogin, dados);
+  }
 
   atualizarPostos(postos) {
     this.storage.set(this.chavePostos, postos);

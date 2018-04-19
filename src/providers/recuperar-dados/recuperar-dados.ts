@@ -18,7 +18,9 @@ export class RecuperarDadosProvider {
 
   AtualizaClientes(): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
-      options: any = {},
+      options: any = {
+        "id": this.storageProvider.listaLogin[0].id
+      },
       url: any = this.baseURI + "vendas-clientes.php";
 
     try {

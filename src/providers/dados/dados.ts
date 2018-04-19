@@ -43,12 +43,10 @@ export class DadosProvider {
         (error: any) => {
 
           if (error.statusText == "OK") {
-            console.log("Tente outra vez")
             console.log(error)
             this.storage.delete(this.storage.chaveDescricaoDespesa);
             this.storage.listaDescricaoDespesa = [];
           } else {
-            console.log('Mais tu é burro, óh');
 
             if (opcional != true) {
               this.storage.adicionarDespesas()

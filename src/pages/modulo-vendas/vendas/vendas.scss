@@ -2,7 +2,7 @@ page-vendas {
 
     .titulo{
         margin-left: 10vw;  
-        width: 50vw;
+        width: 50vw; 
     }
     .grid{
         margin-top: 13vh;
@@ -98,5 +98,12 @@ page-vendas {
 
     #disabled{
         background: rgb(88, 88, 88);
+    }
+    .quit{ 
+        font-size: 10vw;
+        color: white;
+        margin-top:-4.5vh;
+        margin-left:30vw;
+        position: absolute;
     }
 }

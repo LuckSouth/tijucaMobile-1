@@ -3,8 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViagensPage } from '../../modulo-viagens/viagens/viagens';
 import { StorageProvider } from "../../../providers/storage/storage";
 import { VendasPage } from "../../modulo-vendas/vendas/vendas";
-import { AlertController } from "ionic-angular";
-import { LoginPage } from "../../../pages/login/login";
+import { AlertController } from "ionic-angular"; 
 
 @IonicPage()
 @Component({
@@ -61,7 +60,7 @@ export class PrincipalPage {
 
   logout() {
     this.storageProvider.delete(this.storageProvider.chaveLogin);
-    this.navCtrl.push(LoginPage)
+    this.navCtrl.popToRoot()
   }
 
   verificaPermissao() {
@@ -84,10 +83,6 @@ export class PrincipalPage {
     if (this.permissaoSuporte != 1) {
       this.a = document.getElementById('suporte').setAttribute("class", "disabled");
     }
-
-
-
-
   }
 
   ionViewDidEnter() {

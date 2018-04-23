@@ -31,6 +31,10 @@ page-principal {
         .column + .column {
             margin-left: 5vw;
         }
+        .titulo{
+            margin-left: 10vw;  
+            width: 50vw;
+        }
     }
 
     .column {
@@ -114,8 +118,17 @@ page-principal {
         box-sizing: border-box;
     }
 
-}
+    .titulo{
+        margin-left: 10vw;  
+        width: 50vw;
+    }
+    .quit{ 
+        font-size: 10vw;
+        color: white;
+        margin-top:-4.5vh;
+        margin-left:30vw;
+        position: absolute;
+    }
 
-ion-navbar{
-    text-align: center;
 }
+ 

@@ -6,6 +6,7 @@ import { PesquisasPage } from '../pesquisas/pesquisas';
 import { ProdutosPage } from '../produtos/produtos';
 import { SincronizarPage } from '../sincronizar/sincronizar';
 import { TabelasPage } from '../tabelas/tabelas';
+import { StorageProvider } from '../../../providers/storage/storage'; 
 
 /**
  * Generated class for the VendasPage page.
@@ -21,7 +22,8 @@ import { TabelasPage } from '../tabelas/tabelas';
 })
 export class VendasPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public storageProvider: StorageProvider) {
   }
 
   /* Funções de link para outras páginas */
@@ -48,6 +50,11 @@ export class VendasPage {
 
   linkTabelas() {
     this.navCtrl.push(TabelasPage);
+  }
+
+  logout() {
+    this.storageProvider.delete(this.storageProvider.chaveLogin);
+    this.navCtrl.popToRoot()
   }
 
 

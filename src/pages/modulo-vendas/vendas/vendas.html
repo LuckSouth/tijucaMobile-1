@@ -1,7 +1,8 @@
 <ion-header>
 
-  <ion-navbar color="tijuca">
-    <ion-title>Vendas</ion-title>
+  <ion-navbar color="tijuca"> 
+    <ion-title class="titulo">Vendas</ion-title> 
+      <ion-icon name="ios-log-out" (click)="logout()" class="quit"></ion-icon> 
   </ion-navbar>
 
 </ion-header>
@@ -11,7 +12,7 @@
   <ion-content class="card-background-page">
     <div class="grid">
 
-      <div class="row">
+      <div class="row"> 
         <div class="column" (click)="linkClientes()">Clientes
           <button ion-fab class="fab" *ngIf = "abastecimentoPendentes > 0">{{abastecimentoPendentes}}</button>
           <img class="imagem" src="assets/images/cliente.svg" />

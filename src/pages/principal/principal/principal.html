@@ -3,10 +3,11 @@
 <span>
 
   <ion-header>
-
-    <ion-navbar color="tijuca">
-      <ion-title style="text-align: center">Principal</ion-title>
-    </ion-navbar>
+    
+  <ion-navbar color="tijuca"> 
+    <ion-title class="titulo">Principal</ion-title> 
+      <ion-icon name="ios-log-out" (click)="logout()" class="quit"></ion-icon> 
+  </ion-navbar>
 
   </ion-header>
   <div class="fixed-content">
@@ -50,8 +51,6 @@
           </div>
         </div>
       </div>
-
-      <button ion-button color="tijuca" full (click)="logout()">Logout</button>
     </ion-content>
   </div>
 

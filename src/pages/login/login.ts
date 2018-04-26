@@ -121,9 +121,9 @@ export class LoginPage {
       this.recuperarDados.despesas('nome', 'produtos');
       this.recuperarDados.postos();
     }
-    
-    if(this.storageProvider.listaLogin[0].vendas == 1){
-      
+
+    if (this.storageProvider.listaLogin[0].vendas == 1) {
+
       this.recuperarDados.AtualizaClientes();
     }
 
@@ -147,36 +147,61 @@ export class LoginPage {
           console.log(data)
           try {
 
-            if (data.real[0].senha == data.suposto) {
-              this.loginCorreto(data.real)
+            console.log(data[0].nomeValidado)
+
+            if (data[0].nomeValidado == true) {
+              if (data[0].senhaValidada == true) {
+                this.loginCorreto(data)
+                console.log(this.storageProvider.listaLogin[0].viagens)
+              } else {
+
+                  let alerta = this.alertCtrl.create({
+                    title: 'Falha',
+                    subTitle: 'Senha incorreta',
+                    buttons: ['Ok']
+                  });
+                  alerta.present();
+              }
+
             } else {
               let alerta = this.alertCtrl.create({
                 title: 'Falha',
-                subTitle: 'Senha incorreta',
+                subTitle: 'Verifique o nome de usuário',
                 buttons: ['Ok']
               });
               alerta.present();
             }
+
+            // if (data.real[0].senha == data.suposto) {
+            //   this.loginCorreto(data.real)
+            // } else {
+            //   let alerta = this.alertCtrl.create({
+            //     title: 'Falha',
+            //     subTitle: 'Senha incorreta',
+            //     buttons: ['Ok']
+            //   });
+            //   alerta.present();
+            // }
 
             this.hideForm = true;
           } catch (error) {
 
             console.log(error)
 
-            let alerta = this.alertCtrl.create({
-              title: 'Falha',
-              subTitle: 'Verifique o nome de usuário',
-              buttons: ['Ok']
-            });
-            alerta.present();
+            // let alerta = this.alertCtrl.create({
+            //   title: 'Falha',
+            //   subTitle: 'Verifique o nome de usuário',
+            //   buttons: ['Ok']
+            // });
+            // alerta.present();
 
           }
         },
-        (error: any) => {
-          console.log(error)
-          this.erroLogin()
+          (error: any) => {
+            console.log(error)
+            this.erroLogin()
 
-        });
+          });
     }
     catch (error) {
       console.log('catch')

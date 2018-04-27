@@ -15,8 +15,11 @@ export class PrincipalPage {
     public navParams: NavParams,
     public storageProvider: StorageProvider,
     public alertCtrl: AlertController,
+
   ) {
   }
+
+  
 
   permissaoViagens = this.storageProvider.listaLogin[0].viagens;
   permissaoVendas = this.storageProvider.listaLogin[0].vendas;
@@ -60,7 +63,7 @@ export class PrincipalPage {
 
   logout() {
     this.storageProvider.delete(this.storageProvider.chaveLogin);
-    this.navCtrl.popToRoot()
+    this.navCtrl.pop()
   }
 
   verificaPermissao() {

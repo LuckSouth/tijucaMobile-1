@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ViagensPage } from '../../modulo-viagens/viagens/viagens';
 import { StorageProvider } from "../../../providers/storage/storage";
 import { VendasPage } from "../../modulo-vendas/vendas/vendas";
-import { AlertController } from "ionic-angular"; 
+import { AlertController } from "ionic-angular";
 
 @IonicPage()
 @Component({
@@ -19,17 +19,16 @@ export class PrincipalPage {
   ) {
   }
 
-  
 
-  permissaoViagens = this.storageProvider.listaLogin[0].viagens;
-  permissaoVendas = this.storageProvider.listaLogin[0].vendas;
+
+  permissaoViagens //= this.storageProvider.listaLogin[0].viagens;
+  permissaoVendas //= this.storageProvider.listaLogin[0].vendas;
   // Os modulos abaixo nem sequer começaram a ser projetados, logo todos estarão desabilitados
 
   permissaoCaixa = 0;
   permissaoCheque = 0;
   permissaofabrica = 0;
   permissaoSuporte = 0;
-
 
 
   linkViagens() {
@@ -76,7 +75,7 @@ export class PrincipalPage {
     }
     if (this.permissaoCaixa != 1) {
       this.a = document.getElementById('caixa').setAttribute("class", "disabled");
-      }
+    }
     if (this.permissaoCheque != 1) {
       this.a = document.getElementById('cheque').setAttribute("class", "disabled");
     }
@@ -89,6 +88,18 @@ export class PrincipalPage {
   }
 
   ionViewDidEnter() {
+
+
+
+    //console.log(this.storageProvider.retornaLogin())
+
+
+
+    //console.log('klç')
+    //   this.storageProvider.retornaLogin()
+    console.log('Vi' + this.storageProvider.listaLogin[0].viagens + " ve" + this.storageProvider.listaLogin[0].vendas)
+    this.permissaoViagens = this.storageProvider.listaLogin[0].viagens;
+    this.permissaoVendas = this.storageProvider.listaLogin[0].vendas;
     this.verificaPermissao()
   }
-}
+} 

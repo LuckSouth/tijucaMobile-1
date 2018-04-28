@@ -113,7 +113,7 @@ export class StorageProvider {
   chaveProdutos: string = "produtos";
   chaveFormasPagamento: string = "formas_pagamento";
   chavePostos: string = "postos";
-  chaveLogin:string = "login"
+  chaveLogin: string = "login"
 
   constructor(private storage: Storage) {
 
@@ -211,7 +211,7 @@ export class StorageProvider {
   listarClientes() {
     return this.listaClientes
   }
-  listarLogin(){
+  listarLogin() {
     return this.login
   }
 
@@ -355,4 +355,14 @@ export class StorageProvider {
       then(() => true)
   }
 
+  retornaLogin(): any {
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveLogin).then((registros) => {
+        if (registros) { this.listaLogin = registros; } else { this.listaLogin = []; }
+      });
+    });
+
+      console.log('Atualizado')
+  }
+ 
 }

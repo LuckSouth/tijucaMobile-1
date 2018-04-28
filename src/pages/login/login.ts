@@ -127,6 +127,7 @@ export class LoginPage {
       this.recuperarDados.AtualizaClientes();
     }
 
+    this.storageProvider.retornaLogin()
     this.navCtrl.push(PrincipalPage)
 
   }

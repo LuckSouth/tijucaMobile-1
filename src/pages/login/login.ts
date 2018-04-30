@@ -48,47 +48,7 @@ export class LoginPage {
     public recuperarDados: RecuperarDadosProvider,
     public alertCtrl: AlertController
   ) {
-    // this.recuperarDados.fornecedores('nome', 'produtos');
-    // this.recuperarDados.produtos('nome', 'produtos');
-    // this.recuperarDados.formasPagamento('nome', 'produtos');
-    // this.recuperarDados.geral();
-    // this.recuperarDados.despesas('nome', 'produtos');
-    // this.recuperarDados.postos();
-    // this.recuperarDados.AtualizaClientes();
   }
-  // senha = 'a';
-
-  // logado(usuario, senha) {   
-
-  //   return new Promise((resolve, reject) => {
-
-  //     this.dados.login(usuario, senha)
-  //     this.a = this.dados.senha
-  //     if (this.a[0].senha == this.senha) {
-  //       this.arlaPendente = this.storageProvider.tamanhoArla();
-  //       this.abastecimentoPendente = this.storageProvider.tamanhoAbastecimento();
-  //       this.despesasPendente = this.storageProvider.tamanhoDespesas();
-  //       this.receitasPendente = this.storageProvider.tamanhoReceitas();
-  //       this.enviar.enviar();
-
-  //         this.itemsFornecedores = this.storageProvider.listarFornecedores();
-  //         this.fornecedores = this.itemsFornecedores;  
-  //         this.viagensPage()
-
-
-  //     }
-  //     if(this.a[0].senha != this.senha){
-  //       console.log("Didn't work")
-
-  //   this.arlaPendente = this.storageProvider.tamanhoArla();
-  //   this.abastecimentoPendente = this.storageProvider.tamanhoAbastecimento();
-  //   this.despesasPendente = this.storageProvider.tamanhoDespesas();
-  //   this.receitasPendente = this.storageProvider.tamanhoReceitas();
-  //   this.enviar.enviar();
-
-  //     }
-  //   })
-  // }
 
   private baseURI: string = "http://192.168.10.160/";
   public hideForm: boolean = false;
@@ -133,6 +93,7 @@ export class LoginPage {
   }
 
   verificarLogin(usuario, senha) {
+    if(usuario != '' && senha != ''){
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
         "usuario": usuario,
@@ -209,11 +170,16 @@ export class LoginPage {
       this.erroLogin()
 
     }
+  }else{
+    let alerta = this.alertCtrl.create({
+      title: 'Falha',
+      subTitle: 'Preencha todos os campos',
+      buttons: ['Ok']
+    });
+    alerta.present();
   }
 
-
-
-
+  }
 
 }
 

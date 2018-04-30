@@ -1,0 +1,46 @@
+<ion-header>
+
+    <ion-navbar color="tijuca">
+      <ion-title class="tituloPage">Detalhes
+      </ion-title> 
+    </ion-navbar>
+  </ion-header>
+    
+  <ion-content>
+        <div *ngFor="let item of produto">  
+        <!-- <ion-card class="redcard"> 
+          <ion-card-content> 
+            <span class="numero">{{item.numero}}</span>
+            <span class="codigo">{{item.codigo}}</span><br>
+            <span class="cliente">{{item.cod_cliente}} - {{item.cliente}}</span><br> 
+            <span class="pedido">Valor pedido: {{item.valor_pedido}}</span>  <br>
+            <span class="total">Valor total:  {{item.valor_total}}</span>  <br>
+            <span class="data">{{item.data}} - {{item.data_entrega}}</span><br>
+            <span class="vencimento">{{item.data_vencimento}}</span>
+            <span class="mensagem">Mensagem: {{item.mensagem}}</span>  
+          </ion-card-content>
+        </ion-card>  -->
+
+        <ion-card class="card"> 
+        
+          <ion-item class="redcard">
+            <ion-icon name="person" item-start large></ion-icon>
+            <h2 class="titulo">{{item.cliente}} - {{item.cod_cliente}}</h2>
+            <p class="conteudo">Pedido: {{item.codigo}}</p>
+          </ion-item>
+          
+          <ion-item class="redcard">
+            <ion-icon name="calendar" item-start large ></ion-icon>
+            <h2 class="titulo">Pedido - Entrega - Vencimento</h2>
+            <p class="conteudo">{{item.data}} - {{item.data_entrega}} - {{item.data_vencimento}}</p>
+          </ion-item>            
+
+          <ion-item class="redcard">
+            <ion-icon name="logo-usd" item-start large></ion-icon>
+            <h2 class="titulo">Valor total</h2>
+            <p class="conteudo">{{item.valor_pedido}} > {{item.valor_total}}</p>
+            </ion-item> 
+        
+        </ion-card>
+    </div> 
+  </ion-content>

@@ -20,7 +20,7 @@
  <div class="search">
   <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
 </div> <br> <br>
-<div  style="margin-top:auto">
+<div  style="margin-top:5vh;">
   <div *ngFor="let item of items">
     <ng-template [ngIf]="item.limiteCredito >= 1000" [ngIfElse]="limiteBaixo">
       <ion-card class="redcard" (click)="e(item.id_cliente); presentActionSheet()">

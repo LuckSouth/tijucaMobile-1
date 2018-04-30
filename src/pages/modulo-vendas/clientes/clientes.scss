@@ -1,5 +1,6 @@
 page-clientes {
     ion-card{  
+        min-width: 100vw;
         width: 100vw;
         font-weight: bold;  
     }
@@ -12,6 +13,7 @@ page-clientes {
 
     .refresh{ 
         font-size: 10vw;
+        min-font-size: 10vw;
         color: white;
         margin-right:2vw;
     }
@@ -24,6 +26,7 @@ page-clientes {
     .search{
        position: fixed;
        background: #FFFFFF;
+       min-width: 100%;
        width: 100%;
     }
 

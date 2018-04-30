@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageProvider } from '../../providers/storage/storage';
-
+import { SERVIDOR } from "../../util";
 
 
 @Injectable()
 export class RecuperarDadosProvider {
 
   public hideForm: boolean = false;
-  private baseURI: string = "http://192.168.10.160/";
 
   constructor(
     public http: HttpClient,
@@ -21,7 +20,7 @@ export class RecuperarDadosProvider {
       options: any = {
         "id": this.storageProvider.listaLogin[0].id
       },
-      url: any = this.baseURI + "vendas-clientes.php";
+      url: any = SERVIDOR + "vendas-clientes.php";
 
     try {
       this.http.post(url, JSON.stringify(options), headers)
@@ -44,7 +43,7 @@ export class RecuperarDadosProvider {
   postos(): void {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {},
-      url: any = this.baseURI + "postos-combustiveis.php";
+      url: any = SERVIDOR + "postos-combustiveis.php";
 
     try {
       this.http.post(url, JSON.stringify(options), headers)
@@ -67,7 +66,7 @@ export class RecuperarDadosProvider {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
       },
-      url: any = this.baseURI + "fornecedores.php";
+      url: any = SERVIDOR + "fornecedores.php";
 
 
     try {
@@ -91,7 +90,7 @@ export class RecuperarDadosProvider {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
       },
-      url: any = this.baseURI + "geral.php";
+      url: any = SERVIDOR + "geral.php";
 
 
     try {
@@ -119,7 +118,7 @@ export class RecuperarDadosProvider {
         "atributo": atributo,
         "tabela": tabela
       },
-      url: any = this.baseURI + "produtos.php";
+      url: any = SERVIDOR + "produtos.php";
 
     try {
       this.http.post(url, JSON.stringify(options), headers)
@@ -147,7 +146,7 @@ export class RecuperarDadosProvider {
         "atributo": atributo,
         "tabela": tabela
       },
-      url: any = this.baseURI + "formas-pagamento.php";
+      url: any = SERVIDOR + "formas-pagamento.php";
 
     try {
       this.http.post(url, JSON.stringify(options), headers)
@@ -176,7 +175,7 @@ export class RecuperarDadosProvider {
         "atributo": atributo,
         "tabela": tabela
       },
-      url: any = this.baseURI + "despesas.php";
+      url: any = SERVIDOR + "despesas.php";
 
     try {
       this.http.post(url, JSON.stringify(options), headers)

@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageProvider } from "../../providers/storage/storage";
+import { SERVIDOR } from "../../util";
 
 @Injectable()
 export class DadosProvider {
-  baseURI: string = "192.168.10.160";
 
   constructor(public http: HttpClient,
     public storage: StorageProvider) {
@@ -27,7 +27,7 @@ export class DadosProvider {
         "data": data,
         "valor": valor
       },
-      url: any = this.baseURI + "manage-data.php";
+      url: any = SERVIDOR + "manage-data.php";
 
 
     try {
@@ -63,7 +63,7 @@ export class DadosProvider {
   login(usuario: string, senha: string) {
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = { "usuario": usuario, "senha": senha },
-      url: any = this.baseURI + "login.php";
+      url: any = SERVIDOR + "login.php";
 
 
     try {
@@ -114,7 +114,7 @@ export class DadosProvider {
         "posto": posto,
         "precoAbastecimento": precoAbastecimento,
       },
-      url: any = this.baseURI + "manage-data.php";
+      url: any = SERVIDOR + "manage-data.php";
     this.http.post(url, JSON.stringify(options), headers)
       .subscribe((data: any) => {
         console.log(data)
@@ -161,7 +161,7 @@ export class DadosProvider {
         "formaPagamento": formaPagamento
 
       },
-      url: any = this.baseURI + "manage-data.php";
+      url: any = SERVIDOR + "manage-data.php";
     this.http.post(url, JSON.stringify(options), headers)
       .subscribe((data: any) => {
         console.log(data)
@@ -202,7 +202,7 @@ export class DadosProvider {
         "produto": produto,
         "tipoPagmt": tipoPagmt,
       },
-      url: any = this.baseURI + "manage-data.php";
+      url: any = SERVIDOR + "manage-data.php";
 
     this.http.post(url, JSON.stringify(options), headers)
       .subscribe((data: any) => {

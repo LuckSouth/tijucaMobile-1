@@ -11,6 +11,8 @@ import { EnviarProvider } from "../../providers/enviar/enviar";
 import { RecuperarDadosProvider } from '../../providers/recuperar-dados/recuperar-dados';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PrincipalPage } from '../principal/principal/principal';
+import { SERVIDOR } from "../../util";
+
 
 @IonicPage()
 @Component({
@@ -50,7 +52,6 @@ export class LoginPage {
   ) {
   }
 
-  private baseURI: string = "http://192.168.10.160/";
   public hideForm: boolean = false;
 
   erroLogin() {
@@ -99,7 +100,7 @@ export class LoginPage {
         "usuario": usuario,
         "senha": senha,
       },
-      url: any = this.baseURI + "login.php";
+      url: any = SERVIDOR + "login.php";
 
 
     try {

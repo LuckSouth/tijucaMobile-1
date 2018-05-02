@@ -23,14 +23,13 @@ export class ProdutosPage {
     {
       "nome": "A22 - Ovo inddasdsas asdfasfas safasfaws asfsagsa wustrial 6 ",
       "preco": "R$ 6,60",
-      "qtd": "2500 bd",
+      "qtd": "2500 BD",
       "id_produto": "2"
     }]
   }
 
   e(item) {
     console.log(item)
-
   }
 
   getItems(ev: any) {

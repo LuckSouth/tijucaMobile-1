@@ -9,18 +9,48 @@ page-detalhe {
         margin-right:2vw;
     } 
     .card{
-        background-color: #135F8C;  
+        background-color: #306B98;  
         color: white;
     }
     .redcard{
-        background-color: #135F8C;  
+        background-color: #306B98;  
         color: white;
     }
     .titulo{
+        white-space: normal;
         font-weight: bold;
         color: white; 
     }
     .conteudo{ 
         color: white; 
+        white-space: normal;
     }
+
+    .galinha{           
+        height: 8vh;  
+        width: 12vw; 
+        position: absolute;
+    }
+    .quadraedo{ 
+        z-index: 3;
+        margin-left: 15vw;
+    }
+    .nome{
+        font-size:2.3vh;
+        color: #306B98;
+        font-weight: bold; 
+        white-space: normal;
+        padding-top:-5vh; 
+        position: relative;  
+     }
+    .preco{  
+        position: relative; 
+        font-weight: bold; 
+        font-size:2.1vh; 
+     }
+    .quantidade{
+        position: relative ;  
+        font-weight: bold; 
+        font-size:2.1vh;
+    } 
 }

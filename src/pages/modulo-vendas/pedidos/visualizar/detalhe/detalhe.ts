@@ -16,11 +16,43 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class DetalhePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.initializeProduto()
+    this.initializeProduto(); this.initializeItems()
   }
-
+  items: any;
   produto: any;
 
+  initializeItems() {
+    this.items = [{
+      "nome": "A22 - Frango Congelado 1.7 Encaixado",
+      "preco": "R$ 5,00",
+      "qtd": "200 KG",
+      "id_produto": "1"
+    },
+    {
+      "nome": "A22 - Ovo Industrial 6 ",
+      "preco": "R$ 6,60",
+      "qtd": "2500 BD",
+      "id_produto": "2"
+    },
+    {
+      "nome": "A26 - Ovo Branco Grande 7 ",
+      "preco": "R$ 6,60",
+      "qtd": "2500 BD",
+      "id_produto": "2"
+    },
+    {
+      "nome": "A52 - Ovo Preto 6 ",
+      "preco": "R$ 6,60",
+      "qtd": "2500 BD",
+      "id_produto": "2"
+    },
+    {
+      "nome": "A26 - Ovo Branco Grande 7 ",
+      "preco": "R$ 6,60",
+      "qtd": "2500 BD",
+      "id_produto": "2"
+    }]
+  }
   initializeProduto() {
     this.produto = [{
       "numero": "377799",      

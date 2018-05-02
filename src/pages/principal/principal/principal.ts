@@ -4,6 +4,8 @@ import { ViagensPage } from '../../modulo-viagens/viagens/viagens';
 import { StorageProvider } from "../../../providers/storage/storage";
 import { VendasPage } from "../../modulo-vendas/vendas/vendas";
 import { AlertController } from "ionic-angular";
+import { Storage } from '@ionic/storage';
+
 
 @IonicPage()
 @Component({
@@ -13,6 +15,7 @@ import { AlertController } from "ionic-angular";
 export class PrincipalPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
+    public storage: Storage,
     public storageProvider: StorageProvider,
     public alertCtrl: AlertController,
 
@@ -62,6 +65,7 @@ export class PrincipalPage {
 
   logout() {
     this.storageProvider.delete(this.storageProvider.chaveLogin);
+    this.storage.clear()
     this.navCtrl.pop()
   }
 
@@ -89,14 +93,6 @@ export class PrincipalPage {
 
   ionViewDidEnter() {
 
-
-
-    //console.log(this.storageProvider.retornaLogin())
-
-
-
-    //console.log('klç')
-    //   this.storageProvider.retornaLogin()
     console.log('Vi' + this.storageProvider.listaLogin[0].viagens + " ve" + this.storageProvider.listaLogin[0].vendas)
     this.permissaoViagens = this.storageProvider.listaLogin[0].viagens;
     this.permissaoVendas = this.storageProvider.listaLogin[0].vendas;

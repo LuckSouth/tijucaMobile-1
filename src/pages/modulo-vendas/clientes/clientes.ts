@@ -31,7 +31,6 @@ export class ClientesPage {
 
   sincronizar(){
     this.dados.AtualizaClientes();
-    console.log('atualizado')
   }
 
   initializeItems() {

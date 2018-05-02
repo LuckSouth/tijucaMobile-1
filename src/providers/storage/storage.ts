@@ -362,7 +362,6 @@ export class StorageProvider {
       });
     });
 
-      console.log('Atualizado')
   }
  
 }

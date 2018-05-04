@@ -5,14 +5,23 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>subprodutos</ion-title>
+  <ion-navbar color="tijuca">
+    <ion-title class="titulo">Pesquisas
+    </ion-title>
+    <ion-buttons end>
+      <ion-icon name="refresh" (click)="sadc()" class="refresh"></ion-icon>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
+ 
 
 
-<ion-content padding>
+<ion-content >
 
+  <ion-searchbar (ionInput)="getItems($event)" placeholder = "Buscar"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items; let i = index" (click)="e(item.id_produto)">  
+        <div class="nome"> {{item.nome}}</div>  
+    </ion-item> 
+  </ion-list>
 </ion-content>

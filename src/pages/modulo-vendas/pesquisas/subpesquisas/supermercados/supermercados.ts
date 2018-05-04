@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { SubprodutosPage } from '../subprodutos/subprodutos';
 
 /**
  * Generated class for the SupermercadosPage page.
@@ -33,10 +34,10 @@ export class SupermercadosPage {
       "local": "Antônio Bezerra"
     },
     {
-      "codigo": "21214853412534125431241988",
-      "nome": "Super Mercados R. B. Maga523e41254412545215844 12lhães",
-      "endereco": "Rua Coronel Antonio Botdasfdsafasfelho Sousa542141254412544125441254",
-      "local": "Centro523q5447564554w7 75we4s575dx554ys554ty78455"
+      "codigo": "21214",
+      "nome": "Super Mercados R. B.",
+      "endereco": "Rua Coronel Antonio",
+      "local": "Centro5"
     },
     {
       "codigo": "C680",
@@ -47,8 +48,8 @@ export class SupermercadosPage {
   }
 
 
-  e(item) {
-    console.log(item)
+  e(item) {   
+    this.navCtrl.push(SubprodutosPage);
   }
 
   ionViewDidLoad() {

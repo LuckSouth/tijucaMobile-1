@@ -24,10 +24,9 @@ export class PrincipalPage {
 
 
 
-  permissaoViagens //= this.storageProvider.listaLogin[0].viagens;
   permissaoVendas //= this.storageProvider.listaLogin[0].vendas;
   // Os modulos abaixo nem sequer começaram a ser projetados, logo todos estarão desabilitados
-
+  permissaoViagens = 0;
   permissaoCaixa = 0;
   permissaoCheque = 0;
   permissaofabrica = 0;

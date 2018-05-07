@@ -68,7 +68,7 @@ export class LoginPage {
 
 
     this.storageProvider.atualizarLogin(dados)
-
+/*
     if (this.storageProvider.listaLogin[0].viagens == 1) {
       this.recuperarDados.fornecedores('nome', 'produtos');
       this.recuperarDados.produtos();
@@ -77,7 +77,7 @@ export class LoginPage {
       this.recuperarDados.despesas('nome', 'produtos');
       this.recuperarDados.postos();
     }
-
+*/
     if (this.storageProvider.listaLogin[0].vendas == 1) {
 
       this.recuperarDados.AtualizaClientes();
@@ -108,6 +108,9 @@ export class LoginPage {
       try {
         this.http.post(url, JSON.stringify(options), headers)
           .subscribe((data: any) => {
+            console.log('k')
+            console.log(data);
+            
 
             try {
 
@@ -146,7 +149,7 @@ export class LoginPage {
           },
           (error: any) => {
             loading.dismiss()
-            console.log(error)
+           console.log(error) 
             this.erroLogin()
 
           });
@@ -170,6 +173,7 @@ export class LoginPage {
 
   login: login[]
 
+  //Isso é apenas um teste
 
   presentLoadingDefault() {
     let loading = this.loadingCtrl.create({
@@ -186,24 +190,10 @@ export class LoginPage {
 
   teste() {
 
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-
-    loading.present();
-
     this.dados.NovoLogin().subscribe(login => {
-
       this.login = login
       console.log(this.login)
-      loading.dismiss()
-
     })
-  }
-
-  ionViewDidEnter() {
-
-
   }
 
 }

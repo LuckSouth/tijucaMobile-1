@@ -3,11 +3,15 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageProvider } from "../../providers/storage/storage";
 import { SERVIDOR } from "../../util";
+import { Observable } from 'rxjs/Observable';
+import { login } from "../../interfaces/login.interface";
+import { Http } from '@angular/http';
+
 
 @Injectable()
 export class DadosProvider {
 
-  constructor(public http: HttpClient,
+  constructor(public http: Http,
     public storage: StorageProvider) {
   }
 
@@ -31,11 +35,8 @@ export class DadosProvider {
 
 
     try {
-      console.log
       this.http.post(url, JSON.stringify(options), headers)
         .subscribe((data: any) => {
-          console.log(data)
-          // Se a requisição for um sucesso notifique o usuário
           this.hideForm = true;
 
 
@@ -117,17 +118,14 @@ export class DadosProvider {
       url: any = SERVIDOR + "manage-data.php";
     this.http.post(url, JSON.stringify(options), headers)
       .subscribe((data: any) => {
-        console.log(data)
         this.hideForm = true;
       },
       (error: any) => {
         if (error.statusText == "OK") {
-          console.log("Inserido com sucesso")
           this.storage.delete(this.storage.chaveAbastecimento);
           this.storage.listaAbastecimento = [];
           console.log(error)
         } else {
-          console.log('tratar erros');
 
           if (opcional != true) {
             this.storage.adicionarAbastecimento()
@@ -164,15 +162,12 @@ export class DadosProvider {
       url: any = SERVIDOR + "manage-data.php";
     this.http.post(url, JSON.stringify(options), headers)
       .subscribe((data: any) => {
-        console.log(data)
         // Se a requisição for um sucesso notifique o usuário
-        console.log(data)
         this.hideForm = true;
       },
       (error: any) => {
         console.log(error)
         if (error.statusText == "OK") {
-          console.log("Inserido com sucesso")
           this.storage.delete(this.storage.chaveArla);
           this.storage.listaArla = [];
         } else {
@@ -206,18 +201,14 @@ export class DadosProvider {
 
     this.http.post(url, JSON.stringify(options), headers)
       .subscribe((data: any) => {
-        console.log(data)
         // Se a requisição for um sucesso notifique o usuário
-        console.log(data)
         this.hideForm = true;
       },
       (error: any) => {
         if (error.statusText == "OK") {
-          console.log("Inserido com sucesso")
           this.storage.delete(this.storage.chaveReceitas);
           this.storage.listaReceitas = [];
         } else {
-          console.log('tratar erros');
           if (opcional != true) {
             this.storage.adicionarReceitas()
           }
@@ -225,7 +216,15 @@ export class DadosProvider {
       });
   }
 
+  public response: login[];
 
 
+
+
+
+  NovoLogin(): Observable<login[]> {
+    return this.http.get("http://127.0.0.1/produtos.php")
+      .map(res => res.json())
+  }
 
 }

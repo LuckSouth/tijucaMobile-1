@@ -13,7 +13,6 @@ export class GeralDadosViagemPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public recuperarDados: RecuperarDadosProvider, public storageProvider: StorageProvider) {
     this.recuperarDados.geral()
     this.dados = this.storageProvider.listaGeral
-    console.log(this.dados)
   } 
 
   dados: any[] = [];

@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageProvider } from '../../providers/storage/storage';
 import { SERVIDOR } from "../../util";
+import { LoadingController } from 'ionic-angular';
 
 
 @Injectable()
@@ -12,10 +13,21 @@ export class RecuperarDadosProvider {
 
   constructor(
     public http: HttpClient,
-    public storageProvider: StorageProvider) {
+    public storageProvider: StorageProvider,
+    public loadingCtrl: LoadingController
+  ) {
   }
 
   AtualizaClientes(): void {
+
+
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download dos clientes, aguarde'
+    });
+
+    loading.present();
+
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
         "id": this.storageProvider.listaLogin[0].id
@@ -27,7 +39,8 @@ export class RecuperarDadosProvider {
         .subscribe((data: any) => {
           this.storageProvider.atualizarClientes(data);
           this.hideForm = true;
-          console.log(data)
+          loading.dismiss()
+
         },
         (error: any) => {
           console.log(error);
@@ -41,6 +54,13 @@ export class RecuperarDadosProvider {
 
 
   postos(): void {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download dos postos, aguarde'
+    });
+
+    loading.present();
+
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {},
       url: any = SERVIDOR + "postos-combustiveis.php";
@@ -50,6 +70,8 @@ export class RecuperarDadosProvider {
         .subscribe((data: any) => {
           this.storageProvider.atualizarPostos(data);
           this.hideForm = true;
+          loading.dismiss()
+
         },
         (error: any) => {
           console.log(error);
@@ -63,6 +85,13 @@ export class RecuperarDadosProvider {
 
 
   fornecedores(atributo: string, tabela: string, ): void {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download dos fornecedores, aguarde'
+    });
+
+    loading.present();
+
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
       },
@@ -74,6 +103,8 @@ export class RecuperarDadosProvider {
         .subscribe((data: any) => {
           this.storageProvider.atualizarFornecedores(data);
           this.hideForm = true;
+          loading.dismiss()
+
         },
         (error: any) => {
           console.log(error);
@@ -87,9 +118,15 @@ export class RecuperarDadosProvider {
 
   dados = [];
   geral() {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download dos dados da viagem, aguarde'
+    });
+
+    loading.present();
+
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
-      options: any = {
-      },
+      options: any = {},
       url: any = SERVIDOR + "geral.php";
 
 
@@ -98,6 +135,7 @@ export class RecuperarDadosProvider {
         .subscribe((data: any) => {
           this.storageProvider.atualizarGeral(data);
           this.hideForm = true;
+          loading.dismiss()
         },
         (error: any) => {
           console.log(error);
@@ -112,21 +150,28 @@ export class RecuperarDadosProvider {
 
 
 
-  produtos(atributo: string, tabela: string, ): void {
+  produtos(): void {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download dos produtos, aguarde'
+    });
+
+    loading.present();
+
+
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
-      options: any = {
-        "atributo": atributo,
-        "tabela": tabela
-      },
+      options: any = {},
       url: any = SERVIDOR + "produtos.php";
 
     try {
       this.http.post(url, JSON.stringify(options), headers)
         .subscribe((data: any) => {
           this.storageProvider.atualizarProdutos(data);
-          // If the request was successful notify the user
-          // console.log(data)
+
+
+
           this.hideForm = true;
+          loading.dismiss()
 
 
         },
@@ -141,6 +186,13 @@ export class RecuperarDadosProvider {
   }
 
   formasPagamento(atributo: string, tabela: string, ): void {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download das forma de pagamento, aguarde'
+    });
+
+    loading.present();
+
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
         "atributo": atributo,
@@ -152,9 +204,8 @@ export class RecuperarDadosProvider {
       this.http.post(url, JSON.stringify(options), headers)
         .subscribe((data: any) => {
           this.storageProvider.atualizarformasPagamento(data);
-          // If the request was successful notify the user
-          // console.log(data)
           this.hideForm = true;
+          loading.dismiss()
 
 
         },
@@ -170,6 +221,13 @@ export class RecuperarDadosProvider {
 
 
   despesas(atributo: string, tabela: string, ): void {
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download das despesas, aguarde'
+    });
+
+    loading.present();
+
     let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
       options: any = {
         "atributo": atributo,
@@ -181,9 +239,9 @@ export class RecuperarDadosProvider {
       this.http.post(url, JSON.stringify(options), headers)
         .subscribe((data: any) => {
           this.storageProvider.atualizarDespesas(data);
-          // If the request was successful notify the user
-          // console.log(data)
           this.hideForm = true;
+          loading.dismiss()
+
 
 
         },

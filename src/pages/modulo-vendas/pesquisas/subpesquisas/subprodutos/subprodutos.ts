@@ -28,9 +28,9 @@ export class SubprodutosPage {
       {"nome": "021 - Ovo super extra vermelho c/30"}
     ]
   } 
-
+ 
   e(item) {   
     this.navCtrl.push(SubprecosPage);
-  }
+  } 
 
 }

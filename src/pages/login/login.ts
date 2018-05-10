@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams, LoadingController } from 'ionic-angular';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { Storage } from '@ionic/storage/es2015/storage';
 import { StorageProvider } from '../../providers/storage/storage';
@@ -12,7 +12,7 @@ import { RecuperarDadosProvider } from '../../providers/recuperar-dados/recupera
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PrincipalPage } from '../principal/principal/principal';
 import { SERVIDOR } from "../../util";
-
+import { login } from "../../interfaces/login.interface";
 
 @IonicPage()
 @Component({
@@ -48,7 +48,8 @@ export class LoginPage {
     public enviar: EnviarProvider,
     public alert: AlertController,
     public recuperarDados: RecuperarDadosProvider,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController
   ) {
   }
 
@@ -65,24 +66,18 @@ export class LoginPage {
 
   loginCorreto(dados) {
 
-    let alerta = this.alertCtrl.create({
-      title: 'Login',
-      subTitle: 'Login realizado com sucesso',
-      buttons: ['Ok']
-    });
-    alerta.present();
 
     this.storageProvider.atualizarLogin(dados)
-
+/*
     if (this.storageProvider.listaLogin[0].viagens == 1) {
       this.recuperarDados.fornecedores('nome', 'produtos');
-      this.recuperarDados.produtos('nome', 'produtos');
+      this.recuperarDados.produtos();
       this.recuperarDados.formasPagamento('nome', 'produtos');
       this.recuperarDados.geral();
       this.recuperarDados.despesas('nome', 'produtos');
       this.recuperarDados.postos();
     }
-
+*/
     if (this.storageProvider.listaLogin[0].vendas == 1) {
 
       this.recuperarDados.AtualizaClientes();
@@ -94,93 +89,111 @@ export class LoginPage {
   }
 
   verificarLogin(usuario, senha) {
-    if(usuario != '' && senha != ''){
-    let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
-      options: any = {
-        "usuario": usuario,
-        "senha": senha,
-      },
-      url: any = SERVIDOR + "login.php";
+
+    let loading = this.loadingCtrl.create({
+      content: 'Verificando se dados coincidem, aguarde'
+    });
+
+    loading.present();
+
+    if (usuario != '' && senha != '') {
+      let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
+        options: any = {
+          "usuario": usuario,
+          "senha": senha,
+        },
+        url: any = SERVIDOR + "login.php";
 
 
-    try {
-      this.http.post(url, JSON.stringify(options), headers)
-        .subscribe((data: any) => {
+      try {
+        this.http.post(url, JSON.stringify(options), headers)
+          .subscribe((data: any) => {
+            console.log('k')
+            console.log(data);
+            
 
-          console.log(data)
-          try {
+            try {
 
-            console.log(data[0].nomeValidado)
 
-            if (data[0].nomeValidado == true) {
-              if (data[0].senhaValidada == true) {
-                this.loginCorreto(data)
-                console.log(this.storageProvider.listaLogin[0].viagens)
-              } else {
+              if (data[0].nomeValidado == true) {
+                if (data[0].senhaValidada == true) {
+                  this.loginCorreto(data)
+                  loading.dismiss()
+                } else {
 
                   let alerta = this.alertCtrl.create({
                     title: 'Falha',
                     subTitle: 'Senha incorreta',
                     buttons: ['Ok']
                   });
+                  loading.dismiss()
                   alerta.present();
+                }
+
+              } else {
+                let alerta = this.alertCtrl.create({
+                  title: 'Falha',
+                  subTitle: 'Verifique o nome de usuário',
+                  buttons: ['Ok']
+                });
+                loading.dismiss()
+                alerta.present();
               }
 
-            } else {
-              let alerta = this.alertCtrl.create({
-                title: 'Falha',
-                subTitle: 'Verifique o nome de usuário',
-                buttons: ['Ok']
-              });
-              alerta.present();
+
+              this.hideForm = true;
+            } catch (error) {
+              loading.dismiss()
+              console.log(error)
             }
-
-            // if (data.real[0].senha == data.suposto) {
-            //   this.loginCorreto(data.real)
-            // } else {
-            //   let alerta = this.alertCtrl.create({
-            //     title: 'Falha',
-            //     subTitle: 'Senha incorreta',
-            //     buttons: ['Ok']
-            //   });
-            //   alerta.present();
-            // }
-
-            this.hideForm = true;
-          } catch (error) {
-
-            console.log(error)
-
-            // let alerta = this.alertCtrl.create({
-            //   title: 'Falha',
-            //   subTitle: 'Verifique o nome de usuário',
-            //   buttons: ['Ok']
-            // });
-            // alerta.present();
-
-          }
-        },
+          },
           (error: any) => {
-            console.log(error)
+            loading.dismiss()
+           console.log(error) 
             this.erroLogin()
 
           });
-    }
-    catch (error) {
-      console.log('catch')
-      this.erroLogin()
+      }
+      catch (error) {
+        loading.dismiss()
+        this.erroLogin()
 
+      }
+    } else {
+      loading.dismiss()
+      let alerta = this.alertCtrl.create({
+        title: 'Falha',
+        subTitle: 'Preencha todos os campos',
+        buttons: ['Ok']
+      });
+      alerta.present();
     }
-  }else{
-    let alerta = this.alertCtrl.create({
-      title: 'Falha',
-      subTitle: 'Preencha todos os campos',
-      buttons: ['Ok']
-    });
-    alerta.present();
+
   }
 
+  login: login[]
+
+  //Isso é apenas um teste
+
+  presentLoadingDefault() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+
+    loading.present();
+
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
+  }
+
+
+  teste() {
+
+    this.dados.NovoLogin().subscribe(login => {
+      this.login = login
+      console.log(this.login)
+    })
   }
 
 }
-

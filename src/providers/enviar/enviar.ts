@@ -24,7 +24,6 @@ export class EnviarProvider {
       this.despesas = this.storageProvider.listaDescricaoDespesa
 
       for (var index = 0; index <= this.storageProvider.tamanhoDespesas(); index++) {
-        console.log('enviar arquivos no cache');
         this.despesas = this.storageProvider.listaDescricaoDespesa
 
         this.dados.despesas(
@@ -49,7 +48,6 @@ export class EnviarProvider {
     if (this.storageProvider.tamanhoAbastecimento() > 0) {
       this.abastecimento = this.storageProvider.listaAbastecimento
       for (index = 0; index <= this.storageProvider.tamanhoAbastecimento(); index++) {
-        console.log('enviar arquivos no cache');
         this.abastecimento = this.storageProvider.listaAbastecimento
  
         this.dados.abastecimento(

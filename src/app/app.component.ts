@@ -17,6 +17,7 @@ export class MyApp {
 
   rootPage: any = LoginPage; 
   storages: any; 
+  //login = []
 
   constructor(
     platform: Platform,
@@ -26,7 +27,6 @@ export class MyApp {
     public storageProvider: StorageProvider,
     public storage: Storage
   ) {
-
 
     platform.ready().then(() => {
    //   this.screenOrientation.lock(screenOrientation.ORIENTATIONS.PORTRAIT);

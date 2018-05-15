@@ -37,7 +37,7 @@
 
 
       <div class="row">
-        <div class="column" (click)="linkSincronizar()">Sincronizar
+        <div class="column" id="disabled"><!-- (click)="linkSincronizar()"> -->Sincronizar
           <button ion-fab class="fab" *ngIf = "receitasPendentes > 0">{{receitasPendentes}}</button>
           <img class="imagem" src="assets/images/sincronizar.svg" />
         </div>

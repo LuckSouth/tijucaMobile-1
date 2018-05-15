@@ -8,6 +8,7 @@ import { StorageProvider } from '../providers/storage/storage';
 import { Storage } from '@ionic/storage';    
 import { LoginPage } from '../pages/login/login';
 // import { ViagensPage } from '../pages/modulo-viagens/viagens/viagens';
+import { VendasPage } from '../pages/modulo-vendas/vendas/vendas';
 // import { PrincipalPage } from '../pages/principal/principal/principal';
 
 @Component({

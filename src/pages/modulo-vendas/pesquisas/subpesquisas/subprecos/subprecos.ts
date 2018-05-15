@@ -54,6 +54,7 @@ export class SubprecosPage {
           placeholder: 'Preço R$'
         }
       ],
+      cssClass: 'alerta',
       buttons: [
         {
           text: 'CANCELAR',
@@ -67,7 +68,7 @@ export class SubprecosPage {
             console.log('Saved clicked');
           }
         }
-      ]
+      ], 
     });
     prompt.present();
   }

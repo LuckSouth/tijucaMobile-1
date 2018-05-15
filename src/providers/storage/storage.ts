@@ -22,6 +22,11 @@ export class StorageProvider {
     id: 1
   }
 
+  vendasProdutos: any = {
+    codigo: "",
+    descricao: "" 
+  }
+
   login: any = {
     id: 0,
     nome: "",
@@ -107,9 +112,11 @@ export class StorageProvider {
   listaPostos: any[];
   listaClientes: any[];
   listaLogin: any[]
+  listaVendasProdutos: any[]
 
 
-  chaveClientes = "vendasClientes"
+  chaveClientes = "vendasClientes";
+  chaveVendasProdutos = "vendasProdutos";
 
   chaveAbastecimento: string = "abastecimento";
   chaveArla: string = "arla";
@@ -124,6 +131,12 @@ export class StorageProvider {
   chaveLogin: string = "login"
 
   constructor(private storage: Storage) {
+
+    this.storage.ready().then(() => {
+      this.storage.get(this.chaveVendasProdutos).then((registros) => {
+        if (registros) { this.listaVendasProdutos = registros; } else { this.listaVendasProdutos = []; }
+      });
+    });
 
     this.storage.ready().then(() => {
       this.storage.get(this.chaveClientes).then((registros) => {
@@ -217,31 +230,26 @@ export class StorageProvider {
     return this.listaDespesa;
   }
   listarClientes() {
-    return this.listaClientes
+    return this.listaClientes;
+  }
+  listarVendasProdutos() {
+    return this.listaVendasProdutos;
   }
   listarLogin() {
-    return this.login
-  }
-
-
-
-  // Recuperar dados
+    return this.login;
+  } 
   listarFornecedores() {
     return this.listaFornecedores;
   }
-
   listarProdutos() {
     return this.listaProdutos;
   }
-
   listarFormasPagamento() {
     return this.listaFormasPagamento;
   }
-
   listarDescricaoDespesa() {
     return this.listaDescricaoDespesa;
   }
-
   listarPostos() {
     return this.listaPostos;
   }
@@ -287,6 +295,14 @@ export class StorageProvider {
     this.storage.ready().then(() => {
       this.listaClientes.push(this.clientes);
       this.storage.set(this.chaveClientes, this.listaClientes);
+    });
+  }
+
+
+  adicionarVendasProdutos() {
+    this.storage.ready().then(() => {
+      this.listaVendasProdutos.push(this.vendasProdutos);
+      this.storage.set(this.chaveVendasProdutos, this.listaVendasProdutos);
     });
   }
 
@@ -356,6 +372,10 @@ export class StorageProvider {
 
   atualizarClientes(dados) {
     this.storage.set(this.chaveClientes, dados);
+  }
+
+  atualizarVendasProdutos(dados) {
+    this.storage.set(this.chaveVendasProdutos, dados);
   }
 
   delete(id) {

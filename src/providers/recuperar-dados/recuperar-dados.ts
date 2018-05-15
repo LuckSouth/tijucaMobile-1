@@ -21,7 +21,6 @@ export class RecuperarDadosProvider {
   AtualizaClientes(): void {
 
 
-
     let loading = this.loadingCtrl.create({
       content: 'Fazendo download dos clientes, aguarde'
     });
@@ -52,6 +51,40 @@ export class RecuperarDadosProvider {
 
   }
 
+
+  AtualizaVendasProdutos(): void {
+
+
+    let loading = this.loadingCtrl.create({
+      content: 'Fazendo download dos produtos, aguarde'
+    });
+
+    loading.present();
+
+    let headers: any = new HttpHeaders({ 'Content-Type': 'application/json' }),
+      options: any = {
+        "id": this.storageProvider.listaLogin[0].id
+      },
+      url: any = SERVIDOR + "vendas-produtos.php";
+
+    try {
+      this.http.post(url, JSON.stringify(options), headers)
+        .subscribe((data: any) => {
+          console.log(data)
+          this.storageProvider.atualizarProdutos(data);
+          this.hideForm = true;
+          loading.dismiss()
+
+        },
+        (error: any) => {
+          console.log(error);
+
+        });
+    } catch (error) {
+      console.log('catch')
+    }
+
+  }
 
   postos(): void {
 

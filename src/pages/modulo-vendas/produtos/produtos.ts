@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { StorageProvider } from '../../../providers/storage/storage';
 
 @IonicPage()
 @Component({
@@ -8,24 +8,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'produtos.html',
 })
 export class ProdutosPage {
+  searchQuery: string = '';
   items: any[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  codigo: string[];
+  descricao: string[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storageProvider: StorageProvider) {
     this.initializeItems()
   }
   
   initializeItems() {
-    this.items = [{
-      "nome": "A22 - Frango Congelado 1.7 Encaixado",
-      "preco": "R$ 5,00",
-      "qtd": "200 KG",
-      "id_produto": "1"
-    },
-    {
-      "nome": "A22 - Ovo inddasdsas asdfasfas safasfaws asfsagsa wustrial 6 ",
-      "preco": "R$ 6,60",
-      "qtd": "2500 BD",
-      "id_produto": "2"
-    }]
+    this.items = this.storageProvider.listaProdutos
   }
 
   e(item) {
@@ -34,7 +26,7 @@ export class ProdutosPage {
 
   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
+    this.initializeItems(); 
     // set val to the value of the searchbar
     let val = ev.target.value;
     
@@ -55,6 +47,7 @@ export class ProdutosPage {
 
     }
   }
+
 
 
 }

@@ -85,9 +85,10 @@ export class LoginPage {
     if (this.storageProvider.listaLogin[0].vendas == 1) {
 
       this.recuperarDados.AtualizaClientes();
+      this.recuperarDados.AtualizaVendasProdutos()
     }
     } catch (error) {
-      console.log('jkb')
+      console.log(error)
     }
 
 

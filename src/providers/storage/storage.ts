@@ -30,6 +30,14 @@ export class StorageProvider {
   }
 
 
+  loginInicial: any = {
+    id: 0,
+    nome: "",
+    vendas: 2,
+    viagens: 2
+  }
+
+
 
   //Dados despesas
   despesas = {
@@ -362,6 +370,13 @@ export class StorageProvider {
       });
     });
 
+  }
+
+
+  teste(){
+    this.storage.length().then((data) => {
+      return data
+    })
   }
  
 }

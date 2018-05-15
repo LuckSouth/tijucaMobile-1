@@ -19,8 +19,12 @@ export class PrincipalPage {
     public storageProvider: StorageProvider,
     public alertCtrl: AlertController,
 
-  ) {
-  }
+  ) {}
+
+
+ // login = [];
+
+  
 
 
 
@@ -91,10 +95,28 @@ export class PrincipalPage {
   }
 
   ionViewDidEnter() {
+/*
+    this.storage.ready().then(() => {
+      this.storage.get(this.storageProvider.chaveLogin).then((registros) => {
+        this.login = registros;
+        console.log(this.login[0].id)
 
-    console.log('Vi' + this.storageProvider.listaLogin[0].viagens + " ve" + this.storageProvider.listaLogin[0].vendas)
-    this.permissaoViagens = this.storageProvider.listaLogin[0].viagens;
-    this.permissaoVendas = this.storageProvider.listaLogin[0].vendas;
+      });
+    });
+*/
+
+
+
+    try {
+      this.permissaoViagens = this.storageProvider.listaLogin[0].viagens;
+      this.permissaoVendas = this.storageProvider.listaLogin[0].vendas;
+    } catch (error) {
+      this.permissaoViagens = this.storageProvider.listaLogin[0].viagens;
+      this.permissaoVendas = this.storageProvider.listaLogin[0].vendas;
+    }
+
+
+
     this.verificaPermissao()
   }
 } 

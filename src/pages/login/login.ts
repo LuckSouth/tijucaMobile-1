@@ -33,6 +33,7 @@ export class LoginPage {
   itemsFormasPagamento: string[];
   itemsPostos: string[];
   fornecedores;
+  login = [];
 
 
   public itens: Array<any> = [];
@@ -68,20 +69,27 @@ export class LoginPage {
 
 
     this.storageProvider.atualizarLogin(dados)
-/*
-    if (this.storageProvider.listaLogin[0].viagens == 1) {
-      this.recuperarDados.fornecedores('nome', 'produtos');
-      this.recuperarDados.produtos();
-      this.recuperarDados.formasPagamento('nome', 'produtos');
-      this.recuperarDados.geral();
-      this.recuperarDados.despesas('nome', 'produtos');
-      this.recuperarDados.postos();
-    }
-*/
+    /*
+        if (this.storageProvider.listaLogin[0].viagens == 1) {
+          this.recuperarDados.fornecedores('nome', 'produtos');
+          this.recuperarDados.produtos();
+          this.recuperarDados.formasPagamento('nome', 'produtos');
+          this.recuperarDados.geral();
+          this.recuperarDados.despesas('nome', 'produtos');
+          this.recuperarDados.postos();
+        }
+    */
+
+    try {
+      
     if (this.storageProvider.listaLogin[0].vendas == 1) {
 
       this.recuperarDados.AtualizaClientes();
     }
+    } catch (error) {
+      console.log('jkb')
+    }
+
 
     this.storageProvider.retornaLogin()
     this.navCtrl.push(PrincipalPage)
@@ -108,9 +116,8 @@ export class LoginPage {
       try {
         this.http.post(url, JSON.stringify(options), headers)
           .subscribe((data: any) => {
-            console.log('k')
             console.log(data);
-            
+
 
             try {
 
@@ -149,7 +156,7 @@ export class LoginPage {
           },
           (error: any) => {
             loading.dismiss()
-           console.log(error) 
+            console.log(error)
             this.erroLogin()
 
           });
@@ -171,21 +178,9 @@ export class LoginPage {
 
   }
 
-  login: login[]
+  //login: login[]
 
   //Isso é apenas um teste
-
-  presentLoadingDefault() {
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-
-    loading.present();
-
-    setTimeout(() => {
-      loading.dismiss();
-    }, 5000);
-  }
 
 
   teste() {
@@ -194,6 +189,30 @@ export class LoginPage {
       this.login = login
       console.log(this.login)
     })
+  }
+
+  ionViewDidLoad() {
+    this.storageProvider.retornaLogin()
+
+   this.storage.ready().then(() => {
+     this.storage.get(this.storageProvider.chaveLogin).then((registros) => {
+       this.login = registros;
+       console.log(this.login)
+       this.storageProvider.retornaLogin()
+
+       if(this.login == null){
+        console.log('null')
+        this.storageProvider.retornaLogin()
+
+      }else{
+        console.log('Não-null')
+        this.navCtrl.push(PrincipalPage)
+        this.storageProvider.retornaLogin()
+
+      }
+     });
+   });
+
   }
 
 }

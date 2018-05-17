@@ -55,9 +55,12 @@ import { SubprodutosPage } from '../pages/modulo-vendas/pesquisas/subpesquisas/s
 import { SupermercadosPage } from '../pages/modulo-vendas/pesquisas/subpesquisas/supermercados/supermercados';
 import { SubprecosPage } from '../pages/modulo-vendas/pesquisas/subpesquisas/subprecos/subprecos';
 import { FinanceiroPage } from '../pages/modulo-vendas/clientes/venda/financeiro/financeiro';
-import { PedidoPage } from '../pages/modulo-vendas/clientes/venda/pedido/pedido';
-import { InformacoesPage } from '../pages/modulo-vendas/clientes/venda/informacoes/informacoes';
 import { DetalhePage } from '../pages/modulo-vendas/pedidos/visualizar/detalhe/detalhe'; 
+import { PedidoPage } from '../pages/modulo-vendas/clientes/venda/pedido/pedido/pedido';
+import { InformacoesPage } from '../pages/modulo-vendas/clientes/venda/informacoes/informacoes';
+import { IncluirPedidoPage } from '../pages/modulo-vendas/clientes/venda/pedido/incluir-pedido/incluir-pedido';
+import { ItensPage } from '../pages/modulo-vendas/clientes/venda/pedido/itens/itens';
+
 @NgModule({ 
   declarations: [
     MyApp,
@@ -90,6 +93,8 @@ import { DetalhePage } from '../pages/modulo-vendas/pedidos/visualizar/detalhe/d
     FinanceiroPage, 
     PedidoPage,
     InformacoesPage,
+    IncluirPedidoPage,
+    ItensPage,
     TabelasPage,
     DetalhePage,
   ],
@@ -137,6 +142,8 @@ import { DetalhePage } from '../pages/modulo-vendas/pedidos/visualizar/detalhe/d
     FinanceiroPage,
     PedidoPage,
     InformacoesPage,
+    IncluirPedidoPage,
+    ItensPage,
     TabelasPage,
     DetalhePage,
   ],

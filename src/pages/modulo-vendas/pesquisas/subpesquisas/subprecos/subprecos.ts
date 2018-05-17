@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the SubprecosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-subprecos',
@@ -15,11 +8,14 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class SubprecosPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(
+    public navCtrl: NavController,
+     public navParams: NavParams, 
+     public alertCtrl: AlertController) {
     this.initializeItems()
   }
   items: any;
-
+ 
   initializeItems() {
     this.items = [{
       "produto": "914 - ASA DE FRANGO CONGELADA",

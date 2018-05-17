@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { FinanceiroPage } from '../clientes/venda/financeiro/financeiro';
-import { PedidoPage } from '../clientes/venda/pedido/pedido';
+import { PedidoPage } from '../clientes/venda/pedido/pedido/pedido';
 import { InformacoesPage } from '../clientes/venda/informacoes/informacoes';
 import { StorageProvider } from "../../../providers/storage/storage";
 import { RecuperarDadosProvider } from "../../../providers/recuperar-dados/recuperar-dados";
@@ -29,7 +29,7 @@ export class ClientesPage {
     this.initializeItems();
   }
 
-  sincronizar(){
+  sincronizar() {
     this.dados.AtualizaClientes();
   }
 
@@ -84,7 +84,13 @@ export class ClientesPage {
           text: 'Financeiro',
           role: 'destructive',
           handler: () => {
-            this.navCtrl.push(FinanceiroPage);
+            // this.navCtrl.push(FinanceiroPage);
+            let alert = this.alertCtrl.create({
+              title: "Financeiro!",
+              subTitle: 'Código: 123456 <p></p> Cliente: Fulano </p> Cod_Cliente: 12345 </p> Situação: VENCIDO </p> Valor: 648.0 </p> Data Pedido: 00/00/2018 </p> Entrega: 00/00/2018 </p> Vencimento: 00/00/2018',
+              buttons: ['OK']
+            });
+            alert.present();
           }
         }, {
 

@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PedidoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IncluirPedidoPage } from '../incluir-pedido/incluir-pedido';
+import { ItensPage } from '../itens/itens';
 
 @IonicPage()
 @Component({
@@ -15,9 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PedidoPage {
 
+  tab1Root = IncluirPedidoPage;
+  tab2Root = ItensPage;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-
- 
 
 }

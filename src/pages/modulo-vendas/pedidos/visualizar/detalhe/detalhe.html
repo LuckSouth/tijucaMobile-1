@@ -20,28 +20,6 @@
             <ion-icon class="logo" name="person" item-start large (click)="cliente()"></ion-icon>
             <ion-icon class="logo" name="calendar" item-start large (click)="data()"></ion-icon>
             <ion-icon class="logo" name="logo-usd" item-start large (click)="valor()"></ion-icon>
-<!-- 
-        <ion-card class="card"> 
-        
-          <ion-item class="redcard">
-            <ion-icon name="person" item-start large></ion-icon>
-            <h2 class="titulo">{{item.cliente}} - {{item.cod_cliente}}</h2>
-            <p class="conteudo">Pedido: {{item.codigo}}</p>
-          </ion-item>
-          
-          <ion-item class="redcard">
-            <ion-icon name="calendar" item-start large ></ion-icon>
-            <h2 class="titulo">Pedido - Entrega - Vencimento</h2>
-            <p class="conteudo">{{item.data}} - {{item.data_entrega}} - {{item.data_vencimento}}</p>
-          </ion-item>            
-  
-          <ion-item class="redcard">
-            <ion-icon name="logo-usd" item-start large></ion-icon>
-            <h2 class="titulo">Valor Pedido - Total</h2>
-            <p class="conteudo">{{item.valor_pedido}} - {{item.valor_total}}</p>
-            </ion-item> 
-        
-        </ion-card> -->
     </div> 
     <ion-list> 
       <ion-item *ngFor="let item of items; let i = index">

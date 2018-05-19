@@ -2,14 +2,12 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen'; 
-import { ScreenOrientation } from '@ionic-native/screen-orientation'; 
+// import { ScreenOrientation } from '@ionic-native/screen-orientation'; 
 
 import { StorageProvider } from '../providers/storage/storage';  
 import { Storage } from '@ionic/storage';    
 import { LoginPage } from '../pages/login/login';
-// import { ViagensPage } from '../pages/modulo-viagens/viagens/viagens';
-import { VendasPage } from '../pages/modulo-vendas/vendas/vendas';
-// import { PrincipalPage } from '../pages/principal/principal/principal';
+import { VendasPage } from '../pages/modulo-vendas/vendas/vendas'; 
 
 @Component({
   templateUrl: 'app.html'

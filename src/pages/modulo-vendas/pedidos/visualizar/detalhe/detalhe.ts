@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular'; 
 /**
  * Generated class for the DetalhePage page.
  *
@@ -15,7 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class DetalhePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public alertCtrl: AlertController,) {
     this.initializeProduto(); this.initializeItems()
   }
   items: any;
@@ -67,6 +67,60 @@ export class DetalhePage {
       "data_entrega": "29/04/2018",
       "data_vencimento": "05/05/2018"
     }]
-  } 
+  }  
+  cliente(){
+    let alerta = this.alertCtrl.create({
+      title: 'Falha',
+      inputs: [
+        {
+          name: 'concorrencia',
+          placeholder: 'Concorrencia'
+        }, {
+          name: 'preco',
+          placeholder: 'Preço R$'
+        }
+      ],
+      subTitle: 'Senha incorreta',
+      buttons: ['Ok']
+    }); 
+    alerta.present();
+  }
+
+  data(){
+    let alerta = this.alertCtrl.create({
+      title: 'Falha',
+      
+      inputs: [
+        {
+          name: 'concorrencia',
+          placeholder: 'Concorrencia'
+        }, {
+          name: 'preco',
+          placeholder: 'Preço R$'
+        }
+      ],
+      subTitle: 'Senha incorreta',
+      buttons: ['Ok']
+    }); 
+    alerta.present();
+  }
+
+  valor(){
+    let alerta = this.alertCtrl.create({
+      title: 'Falha',
+      inputs: [
+        {
+          name: 'concorrencia',
+          value: 'asdasdas'
+        }, {
+          name: '<b>preco</b>',
+          value: 'dasfsa'
+        }
+      ], 
+      subTitle: 'Senha incorreta',
+      buttons: ['Ok']
+    }); 
+    alerta.present();
+  }
 
 }

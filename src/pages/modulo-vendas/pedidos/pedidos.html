@@ -19,52 +19,9 @@
 
 
 <ion-content>
-<!-- 
   <div class="search">
     <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
-  </div>
-
-  <div style="margin-top:auto">
-    <div *ngFor="let item of items">
-      <ng-template [ngIf]="items[1].status == 'CANCELADO'" [ngIfElse]="limiteBaixo">
-        <ion-card class="redcard" (click)="e(item.id_cliente); presentActionSheet()"  *ngFor="let item of items; let i = index;">
-
-          <ion-card-header>
-            {{items[i].nome}}
-          </ion-card-header>
-
-          <ion-card-content>
-            <span>{{items[i].preco}}</span>
-            <span>{{items[i].data}}</span>
-            <span>{{items[i].status}}</span>
-          </ion-card-content>
-        </ion-card>
-      </ng-template>
-
-      <ng-template #limiteBaixo>
-        <ion-card (click)="e(item.codigoCliente); presentActionSheet() "  *ngFor="let item of items; let i = index;">
-          
-            <ion-card-header>
-                {{items[i].nome}}
-              </ion-card-header>
-    
-              <ion-card-content>
-                <span>{{items[i].preco}}</span>
-                <span>{{items[i].data}}</span>
-                <span>{{items[i].status}}</span>
-              </ion-card-content>
-        </ion-card>
-      </ng-template>
-
-    </div>
-  </div>
-  -->
-
-
- <div class="search">
-    <ion-searchbar (ionInput)="getItems($event)" placeholder="Buscar"></ion-searchbar>
-  </div> <br> <br>
-  <div  style="margin-top:5vh;">
+  </div>  <br><br><br> 
     <div *ngFor="let item of items">
       <ng-template [ngIf]="item.status == 'CANCELADO'" [ngIfElse]="limiteBaixo">
         <ion-card class="redcard" (click)="e(item.id);  linkDetalhe();">
@@ -94,7 +51,6 @@
   
       </ng-template>
   
-    </div>
-  </div>
+    </div> 
 
 </ion-content>

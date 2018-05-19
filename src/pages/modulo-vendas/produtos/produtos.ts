@@ -17,7 +17,7 @@ export class ProdutosPage {
   }
   
   initializeItems() {
-    this.items = this.storageProvider.listaProdutos
+    this.items = this.storageProvider.listaVendasProdutos
   }
 
   e(item) {
@@ -32,7 +32,7 @@ export class ProdutosPage {
     
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.items = this.items.filter((items) => {
+      this.items = this.items.filter((items) => { 
         if (items.nome.toLowerCase().indexOf(val.toLowerCase()) > -1) {
           return (items.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
         }

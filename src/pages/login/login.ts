@@ -2,51 +2,29 @@ import { Component } from '@angular/core';
 import { IonicPage, NavParams, LoadingController } from 'ionic-angular';
 import { NavController } from 'ionic-angular/navigation/nav-controller';
 import { Storage } from '@ionic/storage/es2015/storage';
-import { StorageProvider } from '../../providers/storage/storage';
-import { DadosProvider } from "../../providers/dados/dados";
+import { StorageProvider } from '../../providers/storage/storage'; 
 import { AlertController } from 'ionic-angular';
 import { VendasPage } from '../modulo-vendas/vendas/vendas';
-
-import { EnviarProvider } from "../../providers/enviar/enviar";
+ 
 import { RecuperarDadosProvider } from '../../providers/recuperar-dados/recuperar-dados';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PrincipalPage } from '../principal/principal/principal';
-import { SERVIDOR } from "../../util";
-import { login } from "../../interfaces/login.interface";
+import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+import { SERVIDOR } from "../../util"; 
 
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html'
+  templateUrl: 'login.html' 
 })
 
-export class LoginPage {
-  data: void;
-  abastecimentoPendente;
-  arlaPendente;
-  despesasPendente;
-  receitasPendente;
-
-  searchQuery: string = '';
-  itemsFornecedores: string[];
-  itemsProdutos: string[];
-  itemsFormasPagamento: string[];
-  itemsPostos: string[];
-  fornecedores;
+export class LoginPage { 
   login = [];
-
-
   public itens: Array<any> = [];
-
-
   constructor(
     public navParams: NavParams,
     public navCtrl: NavController,
     public storageProvider: StorageProvider,
     public storage: Storage,
-    public http: HttpClient,
-    public dados: DadosProvider,
-    public enviar: EnviarProvider,
+    public http: HttpClient, 
     public alert: AlertController,
     public recuperarDados: RecuperarDadosProvider,
     public alertCtrl: AlertController,
@@ -68,18 +46,7 @@ export class LoginPage {
   loginCorreto(dados) {
 
 
-    this.storageProvider.atualizarLogin(dados)
-    /*
-        if (this.storageProvider.listaLogin[0].viagens == 1) {
-          this.recuperarDados.fornecedores('nome', 'produtos');
-          this.recuperarDados.produtos();
-          this.recuperarDados.formasPagamento('nome', 'produtos');
-          this.recuperarDados.geral();
-          this.recuperarDados.despesas('nome', 'produtos');
-          this.recuperarDados.postos();
-        }
-    */
-
+    this.storageProvider.atualizarLogin(dados) 
     try {
       
     if (this.storageProvider.listaLogin[0].vendas == 1) {
@@ -93,7 +60,7 @@ export class LoginPage {
 
 
     this.storageProvider.retornaLogin()
-    this.navCtrl.push(PrincipalPage)
+    this.navCtrl.push(VendasPage)
 
   }
 
@@ -102,6 +69,12 @@ export class LoginPage {
     let loading = this.loadingCtrl.create({
       content: 'Verificando se dados coincidem, aguarde'
     });
+
+    //login: login[]
+  
+    //Isso é apenas um teste
+  
+  
 
     loading.present();
 
@@ -177,21 +150,8 @@ export class LoginPage {
       alerta.present();
     }
 
-  }
-
-  //login: login[]
-
-  //Isso é apenas um teste
-
-
-  teste() {
-
-    this.dados.NovoLogin().subscribe(login => {
-      this.login = login
-      console.log(this.login)
-    })
-  }
-
+  } 
+ 
   ionViewDidLoad() {
     this.storageProvider.retornaLogin()
 
@@ -207,12 +167,13 @@ export class LoginPage {
 
       }else{
         console.log('Não-null')
-        this.navCtrl.push(PrincipalPage)
+        this.navCtrl.push(VendasPage)
         this.storageProvider.retornaLogin()
 
       }
      });
-   });
+   }); 
+ 
 
   }
 

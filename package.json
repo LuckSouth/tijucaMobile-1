@@ -33,10 +33,7 @@
     "brmasker-ionic-3": "^1.0.9",
     "cordova-android": "^6.4.0",
     "cordova-browser": "~5.0.3",
-    "cordova-plugin-camera": "^2.4.1",
-    "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-device": "^1.1.7",
-    "cordova-plugin-googleplus": "^5.2.1",
     "cordova-plugin-ionic-webview": "^1.2.1",
     "cordova-plugin-network-information": "^2.0.1",
     "cordova-plugin-screen-orientation": "^2.0.2",
@@ -70,13 +67,9 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-whitelist": {},
       "ionic-plugin-keyboard": {},
-      "cordova-plugin-camera": {},
       "cordova-plugin-screen-orientation": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-network-information": {},
-      "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "myreversedclientid"
-      }
+      "cordova-plugin-network-information": {}
     },
     "cordova-plugin-googleplus": {
       "REVERSED_CLIENT_ID": "myreversedclientid"

@@ -1,26 +1,26 @@
+<!--
+  Generated template for the DetalhesClientesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
 <ion-header>
 
-    <ion-navbar color="tijuca">
+    <ion-navbar color="tijuca">  
       <ion-title class="tituloPage">Detalhes
       </ion-title> 
     </ion-navbar>
   </ion-header>
-    
+  
   <ion-content>
-        <div *ngFor="let item of produto">  
-        <!-- <ion-card class="redcard"> 
-          <ion-card-content> 
-            <span class="numero">{{item.numero}}</span>
-            <span class="codigo">{{item.codigo}}</span><br>
-            <span class="cliente">{{item.cod_cliente}} - {{item.cliente}}</span><br> 
-            <span class="pedido">Valor pedido: {{item.valor_pedido}}</span>  <br>
-            <span class="total">Valor total:  {{item.valor_total}}</span>  <br>
-            <span class="data">{{item.data}} - {{item.data_entrega}}</span><br>
-            <span class="vencimento">{{item.data_vencimento}}</span>
-            <span class="mensagem">Mensagem: {{item.mensagem}}</span>  
-          </ion-card-content>
-        </ion-card>  -->
 
+        <div *ngFor="let item of produto">   
+  
+            <ion-icon class="logo" name="person" item-start large (click)="cliente()"></ion-icon>
+            <ion-icon class="logo" name="calendar" item-start large (click)="data()"></ion-icon>
+            <ion-icon class="logo" name="logo-usd" item-start large (click)="valor()"></ion-icon>
+<!-- 
         <ion-card class="card"> 
         
           <ion-item class="redcard">
@@ -34,16 +34,16 @@
             <h2 class="titulo">Pedido - Entrega - Vencimento</h2>
             <p class="conteudo">{{item.data}} - {{item.data_entrega}} - {{item.data_vencimento}}</p>
           </ion-item>            
-
+  
           <ion-item class="redcard">
             <ion-icon name="logo-usd" item-start large></ion-icon>
             <h2 class="titulo">Valor Pedido - Total</h2>
             <p class="conteudo">{{item.valor_pedido}} - {{item.valor_total}}</p>
             </ion-item> 
         
-        </ion-card>
+        </ion-card> -->
     </div> 
-    <ion-list>
+    <ion-list> 
       <ion-item *ngFor="let item of items; let i = index">
         <img class="galinha" src="assets/images/galinha.svg" />
         <div class="quadraedo">

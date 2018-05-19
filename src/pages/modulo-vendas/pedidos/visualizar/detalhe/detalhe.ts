@@ -70,17 +70,8 @@ export class DetalhePage {
   }  
   cliente(){
     let alerta = this.alertCtrl.create({
-      title: 'Falha',
-      inputs: [
-        {
-          name: 'concorrencia',
-          placeholder: 'Concorrencia'
-        }, {
-          name: 'preco',
-          placeholder: 'Preço R$'
-        }
-      ],
-      subTitle: 'Senha incorreta',
+      title: ' ' + this.produto[0].cliente + ' ', 
+      subTitle: 'Codigo do Cliente: ' + this.produto[0].cod_cliente + '<br>Codigo do Pedido: ' + this.produto[0].codigo,  
       buttons: ['Ok']
     }); 
     alerta.present();
@@ -88,18 +79,8 @@ export class DetalhePage {
 
   data(){
     let alerta = this.alertCtrl.create({
-      title: 'Falha',
-      
-      inputs: [
-        {
-          name: 'concorrencia',
-          placeholder: 'Concorrencia'
-        }, {
-          name: 'preco',
-          placeholder: 'Preço R$'
-        }
-      ],
-      subTitle: 'Senha incorreta',
+      title: 'Data',
+      subTitle: 'Pedido: ' + this.produto[0].data + '<br>Entrega: ' + this.produto[0].data_entrega +  '<br>Vencimento: ' + this.produto[0].data_vencimento,  
       buttons: ['Ok']
     }); 
     alerta.present();
@@ -107,17 +88,8 @@ export class DetalhePage {
 
   valor(){
     let alerta = this.alertCtrl.create({
-      title: 'Falha',
-      inputs: [
-        {
-          name: 'concorrencia',
-          value: 'asdasdas'
-        }, {
-          name: '<b>preco</b>',
-          value: 'dasfsa'
-        }
-      ], 
-      subTitle: 'Senha incorreta',
+      title: 'Valor', 
+      subTitle: 'Valor Pedido: ' + this.produto[0].valor_pedido + '<br>Valor Total: ' + this.produto[0].valor_total,  
       buttons: ['Ok']
     }); 
     alerta.present();
